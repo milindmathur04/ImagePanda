@@ -1,0 +1,67 @@
+window.setInterval(function load(){
+    debugger;
+    if((document.getElementById('player2').play() == false)&&(document.getElementById('player3').play() == false)){
+        fm1();
+    }
+if else((document.getElementById('player1').play() == false)&&(document.getElementById('player3').play() == false)){
+    fm2();
+
+}
+if else((document.getElementById('player1').play() == false)&&(document.getElementById('player2').play() == false)){
+    fm3();}
+    else{fm1();}
+}, 1000);
+
+function fm1() {
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+	    if(xhttp.readyState ==4 && xhttp.status == 200){
+	        var javaobj = JSON.parse(xhttp.response);
+	        alert(javaobj.status);
+	        if(javaobj.status == 0){
+	            document.getElementById('player').play();
+	            document.getElementById('player2').pause();
+	            document.getElementById('player3').pause();
+	        }
+	    }};
+	    xhttp.open("GET","demo.json",true);
+	    xhttp.send();
+
+}
+function fm2() {
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+	    if(xhttp.readyState ==4 && xhttp.status == 200){
+	        var javaobj = JSON.parse(xhttp.response);
+	        alert(javaobj.status);
+	        if(javaobj.status == 0){
+	            document.getElementById('player2').play();
+	            document.getElementById('player').pause();
+	            document.getElementById('player3').pause();
+	        }
+	    }};
+	    xhttp.open("GET","demo2.json",true);
+	    xhttp.send();
+
+}
+
+function fm3() {
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+	    if(xhttp.readyState ==4 && xhttp.status == 200){
+	        var javaobj = JSON.parse(xhttp.response);
+	        alert(javaobj.status);
+	        if(javaobj.status == 0){
+	            document.getElementById('player3').play();
+	            document.getElementById('player2').pause();
+	            document.getElementById('player').pause();
+	        }
+	    }};
+	    xhttp.open("GET","demo3.json",true);
+	    xhttp.send();
+
+}
+
